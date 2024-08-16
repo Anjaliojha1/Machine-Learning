@@ -1,0 +1,30 @@
+# Importing the necessary libraries
+import numpy as np
+import matplotlib.pyplot as pyp
+import pandas as pd
+from sklearn.impute import SimpleImputer
+
+
+# Load the dataset
+df = pd.read_csv('pima-indians-diabetes.csv')
+
+
+# Identify missing data (assumes that missing data is represented as NaN)
+missing_data = df.isnull().sum()
+print("Missing data: \n", missing_data)
+
+
+
+# Print the number of missing entries in each column
+
+# Configure an instance of the SimpleImputer class
+imputer = SimpleImputer(missing_values = np.NaN, strategy= 'mean')
+imputer.fit(df)
+
+# Fit the imputer on the DataFrame
+df_imputed = imputer.transform(df)
+
+# Apply the transform to the DataFrame
+
+#Print your updated matrix of features
+print("Updated matrix of features: \n", df_imputed)
